@@ -1,1 +1,11 @@
 # Named Entity Recognition (NER) Web app for Historical Texts of Project Gutenberg
+
+This Python script  performs Named Entity Recognition (NER) on historical texts from Project Gutenberg. It allows users to either enter a URL or upload a text file, preprocesses the text by removing unnecessary characters and tokenizing into individual words, labels named entities using the NLTK library, extracts features and trains a Naive Bayes classifier, and then labels named entities using the trained classifier. Finally, it displays the named entities found in the text along with their labels.
+
+The script uses several Python libraries, including string, nltk, streamlit, urllib.request, and BeautifulSoup. The NLTK library is used to perform NER, as well as to tokenize words and part-of-speech tag them. The streamlit library is used to create a user-friendly interface for entering URLs or uploading text files, while the urllib.request library is used to download the text from a URL and the BeautifulSoup library is used to parse the HTML and extract the text.
+
+The script first preprocesses the text by removing unnecessary characters such as punctuation and newlines, and converts the text to lowercase. It then tokenizes the text into individual words using the word_tokenize function from NLTK. Next, it labels named entities in the text using the ne_chunk function from NLTK, which labels words with their part-of-speech tags and combines them into chunks based on their syntactic structure.
+
+After labeling the named entities, the script extracts features from them, including the length of the word, its part-of-speech tag, and whether or not it is capitalized. These features are used to train a Naive Bayes classifier using the NaiveBayesClassifier function from NLTK. The data is split into training and testing sets, and the accuracy of the classifier is measured using the accuracy function from NLTK.
+
+Finally, the script labels named entities using the trained classifier by iterating over each sentence in the text, tokenizing it into words, part-of-speech tagging the words, and chunking them into named entities. If a chunk is labeled with a recognized label, such as "PERSON" or "LOCATION", it is added to a list of named entities along with its label. The named entities and their labels are then displayed using the streamlit library.
